@@ -1,0 +1,2 @@
+MONGO = 'mongodb+srv://name:password@mern.rhfusvs.mongodb.net/'
+
