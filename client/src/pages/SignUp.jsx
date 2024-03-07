@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 export default function SignUp() {
   const [formData,setFormData]=useState({});
   const [error,setError]=useState(false);
   const [loading,setLoading]=useState(false);
+   const navigate=useNavigate();
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:e.target.value});
   }
@@ -24,6 +25,7 @@ export default function SignUp() {
       setError(true);
       return;
     }
+    navigate('/sign-in');
     setError(false);
     } catch (error) {
       setLoading(false);
@@ -47,7 +49,7 @@ export default function SignUp() {
       <span className='text-blue-500'>Sign In</span>
       </Link>
       </div>
-      <p className={error ? 'text-red-700 mt-5':'text-green-700 mt-5' }>{error ? "Something went wrong!!":"User Created Successfull" }</p>
+      <p className={error && 'text-red-700 mt-5'}>{error && "Something went wrong!!" }</p>
     </div>
   )
 }
